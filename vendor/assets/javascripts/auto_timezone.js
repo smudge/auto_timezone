@@ -4,4 +4,4 @@ Date.prototype.getDSTTimezoneOffset = function() {
   return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
 }
 
-document.cookie = "auto_timezone_offset=" + -60 * new Date().getDSTTimezoneOffset();
+document.cookie = "auto_timezone_offset=" + -60 * new Date().getDSTTimezoneOffset() + "; path=/";
