@@ -1,7 +1,7 @@
 require 'auto_timezone/version'
 require 'auto_timezone/config'
 
-raise 'Unexpected gem version' unless AutoTimezone::VERSION == '0.0.3'
+raise 'Invalid gem version' unless /\A\d+\.\d+\.\d+\z/.match?(AutoTimezone::VERSION)
 
 config = AutoTimezone.config
 raise 'Missing default timezone preferences' unless config.preferred_timezones == %w(US/Eastern US/Central US/Mountain US/Pacific)
