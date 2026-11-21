@@ -12,11 +12,12 @@ jobs:
           ruby-version: '2.7'
           bundler: '2.4.22'
           bundler-cache: true
-      - run: bundle exec ruby test/smoke_test.rb
+      - run: bundle exec ruby -Ilib test/smoke_test.rb
       - name: Build and install gem
         run: |
           bundle exec rake build
           gem install --local --ignore-dependencies --no-document --install-dir "$RUNNER_TEMP/installed" pkg/auto_timezone-*.gem
+          ruby -I "$RUNNER_TEMP/installed/gems/auto_timezone-$(ruby -Ilib -rauto_timezone/version -e 'print AutoTimezone::VERSION')/lib" test/smoke_test.rb
 
   javascript:
     runs-on: ubuntu-latest
